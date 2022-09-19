@@ -46,10 +46,19 @@
 				text-align: center;
 				
 			}
+			@media screen and (max-width: 540px){
+				.box{
+					width: 90%;
+					height: 600px;
+				}
+				body{
+					background-color: red;
+				}
+			}
 		</style>
 	</head>
 	<body>
-		<h2>通过上下左右按键控制图片切换</h2>
+		<h2>通过上下左右按键控制图片切换5</h2>
 		<div class="box">
 			<span class="prev"> < </span>
 			<span class="next"> > </span>
@@ -77,9 +86,9 @@
 		  var imgs = document.querySelectorAll('img');
 		  var boxW = box.offsetWidth;
 		  var boxH = box.offsetHeight;
-		  var n = 0;//当前显示哪一张
+		  var n = 0;// 当前显示哪一张
 		  var zIndex = 0;
-		  //初始化
+		  // 初始化
 		  for(var i=0;i<imgs.length;i++){
 		  	imgs[i].style.left = -boxW + 'px';
 		  	imgs[i].onmousemove = function(){
@@ -107,27 +116,32 @@
 		  function toLeft(){
 		  	zIndex++;
 		    imgs[n].style.zIndex = zIndex;
-		    animation(imgs[n],{left:-boxW},400,'easeIn');
+		    // animation(imgs[n],{left:-boxW},400,'easeIn');
+			imgs[n].style.left = -boxW + 'px'
+			imgs[n].style.transition = 'left .4s'
+
 		    
 		  	n--;
 		    if(n<0){
 		  		n = imgs.length - 1;
 		  	}
-		    
+			imgs[n].style.transition = 'none'
 		    imgs[n].style.top = 0;
 		    imgs[n].style.left = 0;
 		  }
 		  function toRight(){
 		  	zIndex++;
 		    imgs[n].style.zIndex = zIndex;
-		    animation(imgs[n],{left:boxW},400,'easeIn');
+		    // animation(imgs[n],{left:boxW},400,'easeIn');
+			imgs[n].style.left = boxW + 'px'
+			imgs[n].style.transition = 'left .4s'
 		    
 		    
 		  	n++;
 		    if(n>imgs.length-1){
 		  		n = 0;
 		  	}
-		    
+			imgs[n].style.transition = 'none'
 		    imgs[n].style.top = 0;
 		    imgs[n].style.left = 0;
 		  }
@@ -135,14 +149,16 @@
 		  function toTop(){
 		  	zIndex++;
 		    imgs[n].style.zIndex = zIndex;
-		    animation(imgs[n],{top:-boxH},400,'easeIn');
+		    // animation(imgs[n],{top:-boxH},400,'easeIn');
+			imgs[n].style.top = -boxW + 'px'
+			imgs[n].style.transition = 'top 0.4s'
 		    
 		    
 		  	n--;
 		    if(n<0){
 		  		n = imgs.length - 1;
 		  	}
-		    
+			imgs[n].style.transition = 'none'
 		    imgs[n].style.top = 0;
 		    imgs[n].style.left = 0;
 		    
@@ -152,14 +168,16 @@
 		  function toBottom(){
 		  	zIndex++;
 		    imgs[n].style.zIndex = zIndex;
-		    animation(imgs[n],{top:boxH},400,'easeIn');
+		    // animation(imgs[n],{top:boxH},400,'easeIn');
+			imgs[n].style.top = boxW + 'px'
+			imgs[n].style.transition = 'top 0.4s'
 		    
 		    
 		  	n++;
 		    if(n>imgs.length-1){
 		  		n = 0;
 		  	}
-		    
+			imgs[n].style.transition = 'none'
 		    imgs[n].style.top = 0;
 		    imgs[n].style.left = 0;
 		  }
@@ -182,6 +200,12 @@
 		  	    x1 = e.clientX;
 		  	    y1 = e.clientY;
 		  }
+
+		//   box.ontouchmove = function(e){
+		//     	e = e || event;
+		//   	    x1 = e.clientX;
+		//   	    y1 = e.clientY;
+		//   }
 		  
 		  box.onmouseup = function(e){
 		    	e = e || event;
@@ -189,31 +213,31 @@
 		  	    y2 = e.clientY;
 		  	    var disX = x2 - x1 < 0 ? -(x2 - x1):x2 - x1;
 		  	    var disY = y2 - y1 < 0 ? -(y2 - y1):y2 - y1;
-		  	    
+
 		  	   // console.log(disY,disX);
-		  	    
+
 		  	    //向下
 		  	    if( disY > disX && y2 - y1 > 0 ){
 		  	    	toBottom();
 		  	    }
-		  	    
+
 		  	    //向上
 		  	    if( disY > disX && y2 - y1 < 0 ){
 		  	    	toTop();
 		  	    }
-		  	    
+
 		  	    //向左
 		  	    if( disX > disY && x2 - x1 < 0 ){
 		  	    	toLeft();
 		  	    }
-		  	    
+
 		  	    //向右
 		  	    if( disX > disY && x2 - x1 > 0 ){
 		  	    	toRight();
 		  	    }
-		  	    
+
 		  }
-		  
+
 		  //键盘事件
 		  document.onkeydown = function(e){
 		  	e = e || event;
@@ -235,12 +259,10 @@
 		  		toBottom();
 		  	}
 		  }
-		  
+
 		  //滚轮事件
 		  /*box.onmousewheel = function(e){
 		  	e = e || event;
-		  	
-		  	
 		  }*/
 		</script>
 	</body>

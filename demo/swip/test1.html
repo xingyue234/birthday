@@ -174,14 +174,14 @@
 					 //部分函数封装
 					function toPrev1(m){
 						        //上一个背景渐渐消失
-								body.style.backgroundColor = bgColor[m];
-								body.style.transition = 'all 1s';
-								
+						        // body.style.  = bgColor[m];
+								// body.style.transition = 'all 1s';
+
 								imgB[m].style.transform = 'scale(0)';
 								imgB[m].style.opacity = 0;
 								imgB[m].style.transition = 'transform 1s,opacity 2.5s';
 								//增加透明度过渡时间
-								
+
 								for(var i=0;i<texts.length;i++){
 								    texts[i].style.left = '40%';
 							    }
@@ -195,22 +195,22 @@
 						        //这一个显示，透明度和缩放都设置为1
 								imgB[m].style.opacity = 1;
 								imgB[m].style.transform = 'scale(1)';
-								imgB[m].style.transition = 'opacity 1s';
-								
+								imgB[m].style.transition = 'transform 1s,opacity 1s';
+
 								//这一个从右移动显示
 								texts[m].style.left = '50%';
 								texts[m].style.opacity = '1';
 								texts[m].style.transition = 'opacity .8s,left 1s';
-								
+
 								//这一个背景渐渐出现
 								body.style.backgroundColor = bgColor[m];
 								body.style.transition = 'all 1s';
 					}
 					
 					function toNext1(m){
-						       //上一个背景渐渐消失
-								body.style.backgroundColor = bgColor[m];
-								body.style.transition = 'all 1s';
+						        //上一个背景渐渐消失
+								// body.style.backgroundColor = bgColor[m];
+								// body.style.transition = 'all 1s';
 								
 								//上一个透明度和缩放都消失
 								imgB[m].style.opacity = 0;
