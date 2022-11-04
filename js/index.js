@@ -17,10 +17,8 @@ window.onload = function () {
     }
 
 
-
-
     //2、事件监听
-    particlesJS.load('particles', './particles.json', function () { //加载粒子
+    particlesJS.load('particles', '/home/js/particles.json', function () { //加载粒子
         console.log('callback - particles.js config loaded');
     });
 }
